@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Survey Result</title>
+  </head>
+  <body>
+    <h1>Results</h1>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <p>{{message}}</p>
+        {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <table>
+      <thead>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Tech</th>
+        <th>Comment</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{data['name']}}</td>
+          <td>{{data['location']}}</td>
+          <td>{{data['language']}}</td>
+          <td>{{data['comment']}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
