@@ -13,11 +13,14 @@ def process():
     if request.method == "POST":
         form_data = {}
         if len(request.form['name'])< 1:
-            flash("Name cannot be empty!")
+            flash("Name cannot be empty! Please enter your name and submit again.")
+            return redirect ('/')
         elif len(request.form['comment'])< 1:
-            flash("Comment cannot be empty!")
-        elif len(request.form['comment']) >= 120:
-            flash("Comment can only be 120 characters.")
+            flash("Comment cannot be empty! Please enter a comment and submit again.")
+            return redirect ('/')
+        elif len(request.form['comment']) > 120:
+            flash("Comment can only be 120 characters long. Please edit and submit again.")
+            return redirect ('/')
         else:
             flash("You have filled in all required fields.")
         for key in request.form:

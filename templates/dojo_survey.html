@@ -6,6 +6,13 @@
     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='dojo_style.css')}}" >
   </head>
   <body>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <p>{{message}}</p>
+        {% endfor %}
+        {% endif %}
+    {% endwith %}
 
     <form action="/process" method="POST">
       <p>Your Name: <input type="text" name="name"></p>
@@ -22,7 +29,7 @@
         <option value="ruby">Ruby on Rails</option>
         <option value="java">Java</option>
       </select></p>
-      <p>Comment: (optional)<br>
+      <p>Comment: (120 characters max)<br>
         <textarea name="comment" rows="10" cols="30"></textarea>
       </p>
       <input type="submit" value="Submit">
